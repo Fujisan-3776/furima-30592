@@ -11,9 +11,7 @@
 | first_name      | string  | null: false |
 | last_name_kana  | string  | null: false |
 | first_name_kana | string  | null: false |
-| birth_date_1i   | integer | null: false |
-| birth_date_2i   | integer | null: false |
-| birth_date_3i   | integer | null: false |
+| birth_date      | date    | null: false |
 
 ### Association
 
@@ -24,15 +22,15 @@
 
 ## items テーブル
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| seller_name     | string     | null: false                    |
-| category        | integer    | null: false                    |
-| item_condition  | integer    | null: false                    |
-| delivery_charge | integer    | null: false                    |
-| shipping_area   | integer    | null: false                    |
-| shipping_days   | integer    | null: false                    |
-| user_id         | references | null: false, foreign_key: true |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| name               | string     | null: false                    |
+| category_id        | integer    | null: false                    |
+| item_condition_id  | integer    | null: false                    |
+| delivery_charge_id | integer    | null: false                    |
+| shipping_area_id   | integer    | null: false                    |
+| shipping_days_id   | integer    | null: false                    |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -45,8 +43,8 @@
 
 | Column   | Type       | Options                        |
 | -------- | ---------- | ------------------------------ |
-| user_id  | references | null: false, foreign_key: true |
-| order_id | references | null: false, foreign_key: true |
+| user     | references | null: false, foreign_key: true |
+| order    | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -60,13 +58,13 @@
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| postal_codet  | integer    | null: false                    |
+| postal_codet  | string     | null: false                    |
 | prefecture    | integer    | null: false                    |
 | city          | string     | null: false                    |
 | house_number  | string     | null: false                    |
 | building_name | string     |                                |
-| phone_number  | integer    | null: false                    |
-| order_id      | references | null: false, foreign_key: true |
+| phone_number  | string     | null: false                    |
+| order         | references | null: false, foreign_key: true |
 
 ### Association
 
