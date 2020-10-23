@@ -29,32 +29,62 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Item describe can't be blank")
     end
 
-    it "category_id（カテゴリー）が選択されていないと登録できないこと" do
+    it "category_id（カテゴリー）が存在しないと登録できないこと" do
       @item.category_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Category must be choiced")
     end
 
-    it "item_condition_id（商品の状態）が選択されていないと登録できないこと" do
+    it "category_id（カテゴリー）が0（デフォルトの状態）だと登録できないこと" do
+      @item.category_id = 0
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Category must be choiced")
+    end
+
+    it "item_condition_id（商品の状態）が存在しないと登録できないこと" do
       @item.item_condition_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Item condition must be choiced")
     end
 
-    it "delivery_charge_id（配送料の負担）が選択されていないと登録できないこと" do
+    it "item_condition_id（商品の状態）が0（デフォルトの状態）だと登録できないこと" do
+      @item.item_condition_id = 0
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Item condition must be choiced")
+    end
+
+    it "delivery_charge_id（配送料の負担）が存在しないと登録できないこと" do
       @item.delivery_charge_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Delivery charge must be choiced")
     end
 
-    it "prefecture_id（発送元の地域）が選択されていないと登録できないこと" do
+    it "delivery_charge_id（配送料の負担）が0（デフォルトの状態）だと登録できないこと" do
+      @item.delivery_charge_id = 0
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Delivery charge must be choiced")
+    end
+
+    it "prefecture_id（発送元の地域）が存在しないと登録できないこと" do
       @item.prefecture_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Prefecture must be choiced")
     end
 
-    it "shipping_days_id（発送までの日数）が選択されていないと登録できないこと" do
+    it "prefecture_id（発送元の地域）が0（デフォルトの状態）だと登録できないこと" do
+      @item.prefecture_id = 0
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Prefecture must be choiced")
+    end
+
+    it "shipping_days_id（発送までの日数）が存在しないと登録できないこと" do
       @item.shipping_days_id = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Shipping days must be choiced")
+    end
+
+    it "shipping_days_id（発送までの日数）が0（デフォルトの状態）だと登録できないこと" do
+      @item.shipping_days_id = 0
       @item.valid?
       expect(@item.errors.full_messages).to include("Shipping days must be choiced")
     end
