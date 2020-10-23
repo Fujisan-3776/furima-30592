@@ -7,7 +7,7 @@ RSpec.describe Item, type: :model do
       @item = FactoryBot.build(:item)
     end
 
-    it "image、item_name、item_describe、category_id、item_condition_id、delivery_charge_id、prefecture_id、shipping_days_id、priceeが存在すれば登録できること" do
+    it "image、item_name、item_describe、category_id、item_condition_id、delivery_charge_id、prefecture_id、shipping_days_id、priceが存在すれば登録できること" do
       expect(@item).to be_valid
     end
 
