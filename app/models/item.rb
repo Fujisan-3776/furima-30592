@@ -19,7 +19,7 @@ class Item < ApplicationRecord
     validates :delivery_charge_id, numericality: { other_than: 0, message: "must be choiced" } 
     validates :prefecture_id, numericality: { other_than: 0, message: "must be choiced" } 
     validates :shipping_days_id, numericality: { other_than: 0, message: "must be choiced" } 
-    validates :price, format: { with: /\A[0-9]+\z/, message: "is invalid. Input half-width numbers "}, inclusion: { in: (300..9999999), message: " must be over ¥300 and under ¥9,999,999 "}
+    validates :price, format: { with: /\A[0-9]+\z/ }, inclusion: { in: (300..9999999), message: "is invalid. Input half-width numbers and must be over ¥300 and under ¥9,999,999 "}
     validates :user
   end
 
