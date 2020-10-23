@@ -66,13 +66,13 @@ RSpec.describe Item, type: :model do
     end
 
     it "price（販売価格）は300円未満では登録できないこと" do
-      @item.price = "200"
+      @item.price = 299
       @item.valid?
       expect(@item.errors.full_messages).to include("Price is invalid. Input half-width numbers and must be over ¥300 and under ¥9,999,999 ")
     end
 
     it "price（販売価格）は10,000,000円以上では登録できないこと" do
-      @item.price = "10000001"
+      @item.price = 10000000
       @item.valid?
       expect(@item.errors.full_messages).to include("Price is invalid. Input half-width numbers and must be over ¥300 and under ¥9,999,999 ")
     end
