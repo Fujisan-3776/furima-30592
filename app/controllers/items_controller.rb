@@ -1,13 +1,14 @@
 class ItemsController < ApplicationController
   def index
+    @items = Item.includes(:user).order("created_at DESC")
   end
 
   def new
-    # 以下の記述はdeviseの「authenticate_iser!」メソッドに移行したが、メモとして残しておく
-    # unless user_signed_in?
+    unless user_signed_in?
 
-    #   redirect_to new_user_session_path
-    # end
+      redirect_to new_user_session_path
+    end
+
     @item = Item.new
   end
 
