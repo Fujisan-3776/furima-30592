@@ -1,10 +1,10 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :genre_category
-  belongs_to_active_hash :genre_delivery_charge
-  belongs_to_active_hash :genre_item_condition
-  belongs_to_active_hash :genre_prefecture
-  belongs_to_active_hash :genre_shipping_day
+  belongs_to_active_hash :category
+  belongs_to_active_hash :delivery_charge
+  belongs_to_active_hash :item_condition
+  belongs_to_active_hash :prefecture
+  belongs_to_active_hash :shipping_days
 
   belongs_to :user
   has_one :ordr
