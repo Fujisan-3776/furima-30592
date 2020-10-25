@@ -62,7 +62,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def move_to_index
+  def move_to_index  # deviseのauthenticate_user!メソッドにも置き換えられるが、「出品者以外のユーザーがURLの直接入力により出品していない商品の情報編集ページへ遷移できないようにする」という意図を示す為にmove_to_indexを採用している。
     if current_user.id != @item.user.id
       redirect_to root_path
     end
