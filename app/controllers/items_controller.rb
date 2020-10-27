@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :item_select, only: [:show, :destroy, :edit, :update]
+  before_action :item_select, only: [:show, :destroy, :edit, :update, :index]
   before_action :move_to_login, except: [:index, :show]
   before_action :move_to_index, only: :edit
 
