@@ -65,6 +65,10 @@ RSpec.describe OrderDelivery, type: :model do
       expect(@item.errors.full_messages).to include("Phone number is invalid. Input half-width numbers without hyphen(-) and 10 or 11 numbers")
     end
 
+    it "建物名が存在しなくても登録できること" do
+      @item.building_name = ""
+      expect(@item).to be_valid
+    end
 
   end
 end

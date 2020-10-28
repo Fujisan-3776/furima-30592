@@ -33,7 +33,8 @@
 
     <%# 商品が売れていない場合はこちらを表示しましょう %>
     <% if user_signed_in? && current_user.id != @item.user.id %>
-      <% unless Order.exists?(item_id: @item.id) %>
+      <%# <% unless Order.exists?(item_id: @item.id) この分はいかにも置き換えられる（参考にコードを残しておくもの） %>
+      <% unless @item.order%>
         <%= link_to '購入画面に進む', item_orders_path(@item.id) ,class:"item-red-btn"%>
       <% end %>
     <% end %>

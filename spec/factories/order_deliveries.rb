@@ -5,6 +5,7 @@ FactoryBot.define do
     prefecture_id {Faker::Number.within(range: 1..47)}
     city {Faker::Address.city}
     house_number {Faker::Lorem.sentence}
+    building_name {Faker::Lorem.sentence}
     phone_number {Faker::Number.within(range: 10000000000..99999999999)}
   end
 end
