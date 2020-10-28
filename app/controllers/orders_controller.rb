@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
   before_action :item_select
+  before_action :move_to_login, only: [:index]
+  before_action :move_to_top_page, only: [:index]
 
   def index
     @order_delivery = OrderDelivery.new
@@ -28,12 +30,24 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = "sk_test_45266ff983ef0d39b1b92644"  # 自身のPAY.JPテスト秘密鍵を記述しましょう
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       Payjp::Charge.create(
         amount: @item.price,  # 商品の値段
         card: params[:token],    # カードトークン
         currency: 'jpy'                 # 通貨の種類（日本円）
       )
+  end
+
+  def move_to_login
+    unless user_signed_in?
+      redirect_to new_user_session_path
+    end
+  end
+
+  def move_to_top_page  
+    if current_user.id == @item.user.id or Order.exists?(item_id: @item.id)
+      redirect_to root_path
+    end
   end
 
 end

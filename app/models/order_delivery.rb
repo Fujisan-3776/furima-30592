@@ -1,14 +1,18 @@
 class OrderDelivery
   include ActiveModel::Model
-  attr_accessor :number, :exp_month, :exp_year, :cvc, :user_id, :item_id, :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number, :order_id, :token
+  attr_accessor :number, :exp_month, :exp_year, :cvc, :token, :user_id, :item_id, :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number, :order_id
 
   with_options presence: true do
-    validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
-    validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
+    # validates :number, format: {with: /\A\d{14,16}\z/, message: "is invalid. Input 14 or 16 half-width numbers"}
+    # validates :exp_month, format: {with: /\A\d{2}\z/ , message: "is invalid. Input 2 half-width numbers"}
+    # validates :exp_year, format: {with: /\A\d{2}\z/ , message: "is invalid. Input 2 half-width numbers"}
+    # validates :cvc, format: {with: /\A\d{3,4}\z/ , message: "is invalid. Input 3 or 4 half-width numbers"}
+    validates :token
+    validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "can't be blank. Input half-width numbers with hyphen(-)"}
+    validates :prefecture_id, numericality: { other_than: 0, message: " must be choiced" }
     validates :city
     validates :house_number
-    validates :phone_number, format: {with: /\A\d{10,11}\z/, message: "is invalid. Input half-width numbers"}
-    validates :token
+    validates :phone_number, format: {with: /\A\d{10,11}\z/, message: "is invalid. Input half-width numbers without hyphen(-)"}
   end
 
   def save
